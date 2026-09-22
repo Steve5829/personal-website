@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Steve’s Knowledge Workspace — 项目 · 知识 · 面试</title>
+  <meta name="description" content="Steve Chen 的个人知识网络：连接项目、设计取舍、踩坑与源码证据。职位找证据、面试练习与可导出的个人学习记录。">
+  <meta name="theme-color" content="#173f36"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="knowledge.css">
+  <script src="knowledge-data.js" defer></script><script src="knowledge-engine.js" defer></script><script src="knowledge.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到工作区</a>
+<header class="topbar">
+  <a class="brand" href="https://steve5829.github.io/personal-website/"><span class="brand-mark">sc<span>·</span></span><span>Steve Chen<small>PERSONAL KNOWLEDGE WORKSPACE</small></span></a>
+  <nav aria-label="工作区"><button class="mode active" data-mode="graph" aria-pressed="true">01 <span>知识网络</span></button><button class="mode" data-mode="job" aria-pressed="false">02 <span>职位找证据</span></button><button class="mode" data-mode="practice" aria-pressed="false">03 <span>面试训练</span></button></nav>
+  <a class="portfolio-link" href="https://steve5829.github.io/personal-website/">Portfolio ↗</a>
+</header>
+<main id="main">
+  <section class="workspace-heading"><div><p class="eyebrow">THE CONNECTIONS BEHIND THE WORK</p><h1 id="mode-title">知道什么，为什么，在哪里用过。</h1><p id="mode-description">从项目进入，沿着设计取舍、踩坑与源码证据继续追问。</p></div><div class="workspace-meta"><span id="graph-stats"></span><div><button class="quiet" id="export-state">导出我的记录</button><button class="quiet" id="import-state">导入</button><input type="file" id="import-file" accept=".json,application/json" hidden></div></div></section>
+  <p class="notice" id="storage-note">你的回答、笔记和新增知识保存在当前浏览器。定期导出即可迁移；职位描述在本机处理。</p>
+  <div id="status" role="status" aria-live="polite"></div>
+  <section id="graph-mode" class="mode-panel">
+    <div class="knowledge-layout">
+      <aside class="library panel" aria-label="知识索引">
+        <div class="panel-top"><h2>知识索引</h2><span id="index-count" class="count"></span></div>
+        <label class="search-label" for="node-search">搜索概念 / 项目 / 问题</label><input id="node-search" type="search" placeholder="试试：幂等、Godot、JSON" autocomplete="off">
+        <div class="filter-row"><label>领域<select id="domain-filter"><option value="">全部领域</option><option value="backend">后端系统</option><option value="runtime">语言运行时</option><option value="ai">AI 工具</option><option value="game">游戏系统</option><option value="career">经历与表达</option></select></label><label>类型<select id="type-filter"><option value="">全部类型</option><option value="project">项目</option><option value="experience">经历</option><option value="concept">概念</option><option value="decision">设计取舍</option><option value="pitfall">踩坑</option><option value="evidence">证据</option><option value="question">面试问题</option></select></label></div>
+        <div id="node-results" class="node-results"></div>
+        <div class="paths"><p class="eyebrow">沿一条线深入</p><div id="learning-paths"></div></div>
+      </aside>
+      <section class="graph-panel panel" aria-labelledby="graph-title">
+        <div class="panel-top"><div><p class="eyebrow">CONNECTED VIEW</p><h2 id="graph-title">项目背后的联系</h2></div><button id="reset-graph" class="quiet">回到全貌</button></div>
+        <div class="graph-tools"><label>展开范围<select id="graph-depth"><option value="1">一层关联</option><option value="2">两层关联</option></select></label><div class="graph-key"><span class="key-project">项目 / 经历</span><span class="key-concept">概念 / 取舍</span><span class="key-question">问题 / 证据</span></div></div>
+        <div class="graph-canvas"><svg id="network" viewBox="0 0 900 680" aria-label="可交互的知识关系图" role="group"></svg></div>
+        <p id="graph-caption" class="graph-caption"></p>
+        <div id="path-banner" class="path-banner" hidden></div>
+        <div class="connection-finder"><label for="path-target">它和什么有关？</label><div><select id="path-target" aria-label="选择连接终点"></select><button class="primary" id="find-path">找关联路径</button></div><p>路径展示资料中明确记录的关系，不代表已掌握所有节点。</p></div>
+      </section>
+      <aside id="inspector" class="inspector panel" aria-label="节点详情"></aside>
+    </div>
+  </section>
+  <section id="job-mode" class="mode-panel" hidden>
+    <div class="job-layout">
+      <section class="panel job-input"><p class="eyebrow">TURN REQUIREMENTS INTO STORIES</p><h2>把职位要求，落到你的经历上。</h2><p class="muted">粘贴职位描述，找到相关项目、可讲的取舍和下一步要补的知识。</p><label for="job-text">职位描述</label><textarea id="job-text" rows="15" maxlength="50000" placeholder="Paste a software engineering job description here…"></textarea><div class="button-row"><button id="match-job" class="primary">找出我的证据</button><button id="sample-job" class="quiet">载入示例职位</button></div><p class="fine-print">按明确技术词及别名匹配，不打虚构的录用概率或 ATS 分数。没有匹配，不等于你没有能力；匹配也不代表满足全部要求。</p></section>
+      <section class="panel job-output" aria-label="职位关联结果"><div class="panel-top"><h2>你的面试素材</h2><button id="export-job" class="quiet" disabled>导出准备包 ↓</button></div><div id="job-results"><div class="empty-state"><span class="empty-symbol">↗</span><h3>要求 → 真实经历 → 可讲的回答</h3><p>结果会区分有项目或经历支撑的内容、学习材料，以及暂未找到证据的技术词。</p></div></div></section>
+    </div>
+  </section>
+  <section id="practice-mode" class="mode-panel" hidden>
+    <div class="practice-layout"><aside class="panel practice-queue"><div class="panel-top"><h2>练习队列</h2><span id="due-count" class="count"></span></div><label for="practice-domain">选择领域</label><select id="practice-domain"><option value="">全部领域</option><option value="backend">后端系统</option><option value="runtime">语言运行时</option><option value="ai">AI 工具</option><option value="game">游戏系统</option><option value="career">经历与表达</option></select><label class="checkbox"><input type="checkbox" id="due-only">只看待复习 / 未练习</label><div id="question-list"></div></aside><section class="panel practice-card" id="practice-card"></section><aside class="panel practice-guide"><p class="eyebrow">MAKE THE ANSWER YOURS</p><h2>把“知道”讲成“做过”。</h2><ol><li><strong>上下文</strong><span>要解决什么问题，有哪些限制？</span></li><li><strong>你的决定</strong><span>比较过什么方案，为什么这样选？</span></li><li><strong>验证</strong><span>有什么测试、现象或数据支持？</span></li><li><strong>边界</strong><span>哪些是亲自完成，哪些仍在学习？</span></li></ol><p class="fine-print">参考回答是根据资料整理的练习底稿。复习时间由你的自评决定；这里没有自动评分，也不会把学习笔记变成工作经历。</p><button class="quiet" id="export-answers">导出我的面试笔记 ↓</button></aside></div>
+  </section>
+  <footer class="workspace-footer"><span>由项目与原始材料连接而来 · 2027 new grad</span><span>来源标签：上游证据 / 简历 / 个人笔记 / 学习材料 / 新建项目</span><a href="assets/Steve_Knowledge_Workspace.zip" download>下载离线版 ↓</a><a href="knowledge-guide.html">怎么用这个工作台 ↗</a></footer>
+</main>
+<dialog id="add-dialog"><form id="add-form"><div class="panel-top"><h2>把新知识接进来</h2><button type="button" id="close-dialog" class="quiet" aria-label="关闭">×</button></div><p class="muted" id="add-context"></p><label>标题<input id="add-label" required maxlength="100" placeholder="例如：Redis 缓存失效的一次排查"></label><div class="filter-row"><label>类型<select id="add-type"><option value="concept">概念</option><option value="pitfall">踩坑</option><option value="decision">设计取舍</option><option value="question">待研究的问题</option></select></label><label>来源<select id="add-level"><option value="study">学习材料</option><option value="personal-note">我的实践笔记</option></select></label></div><label>内容<textarea id="add-details" required rows="6" maxlength="8000" placeholder="记录问题、解释、例子，或你的实际处理过程。"></textarea></label><label>来源链接（可选）<input id="add-source" type="url" placeholder="https://…"></label><button type="submit" class="primary">保存并连接到当前节点</button><p class="fine-print">仅保存在你的浏览器，导出记录可以备份。</p></form></dialog>
+<noscript>这个工作台需要开启 JavaScript。基础内容可在个人网站的项目案例中阅读。</noscript>
+</body></html>
