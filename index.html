@@ -1,220 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Steve Chen — Software Engineer</title>
-  <meta name="description" content="Steve Chen — software engineer working the seam between distributed backends and applied AI. CS at Ohio State, GSoC 2026 contributor." />
-  <link rel="icon" href="assets/avatar-crop.png" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-  <!-- ============ NAV ============ -->
-  <header class="nav" id="nav">
-    <a class="nav-mark" href="#top">Steve Chen<span class="star">.</span></a>
-    <nav class="nav-links">
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#toolbox">Toolbox</a>
-      <a href="#hello">Contact</a>
-    </nav>
-    <a class="nav-resume" href="assets/Steve_Chen_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
-  </header>
-
-  <main id="top">
-
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <p class="hero-eyebrow fade-in">Portfolio — 2026 · Columbus, OH</p>
-      <h1 class="fade-in d1">
-        I engineer the seam between
-        <span class="accent">distributed backends</span> and
-        <span class="accent">applied&nbsp;AI</span>.
-      </h1>
-      <div class="hero-row fade-in d2">
-        <div class="hero-id">
-          <img class="hero-face" src="assets/avatar-crop.png" alt="Steve Chen" />
-          <div class="hero-id-text">
-            <strong>Steve Chen</strong>
-            <span><i class="pulse"></i> Open to SWE internships &amp; new-grad roles</span>
-          </div>
-        </div>
-        <div class="hero-links">
-          <a href="https://github.com/Steve5829" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/steve-chen-593265366/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:chen.12215@buckeyemail.osu.edu">Email</a>
-        </div>
-      </div>
-      <p class="hero-note fade-in d3">
-        B.S. Computer Science &amp; Engineering, The Ohio State University ’27.
-        Three internships in. Google Summer of Code 2026 contributor
-        under the Python Software Foundation.
-      </p>
-    </section>
-
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Spring Boot · RAG pipelines · OAuth 2.0 · GSoC ’26 · PostgreSQL · AI agents · React · Computer vision · AWS · MCP · pocketpy · Godot · </span><span>Spring Boot · RAG pipelines · OAuth 2.0 · GSoC ’26 · PostgreSQL · AI agents · React · Computer vision · AWS · MCP · pocketpy · Godot · </span>
-      </div>
-    </div>
-
-    <!-- ============ EXPERIENCE ============ -->
-    <section class="section" id="experience">
-      <div class="section-head fade-in">
-        <span class="sec-no">01</span>
-        <h2>Experience</h2>
-        <span class="sec-note">click a row to expand</span>
-      </div>
-
-      <div class="rows">
-
-        <article class="row fade-in">
-          <button class="row-head" aria-expanded="false">
-            <span class="row-when">Jan 2026 —<br />Present</span>
-            <span class="row-title">
-              <strong>K.C. Voicebotics</strong>
-              <em>Software Engineer Intern · Full Stack &amp; Integration</em>
-            </span>
-            <span class="row-gist">OAuth infrastructure for 100+ clients</span>
-            <span class="row-plus" aria-hidden="true"></span>
-          </button>
-          <div class="row-body">
-            <div class="row-body-inner">
-              <ul>
-                <li>Engineered a scalable multi-tenant <b>OAuth 2.0</b> pipeline with React and Spring Boot, integrating Meta (Instagram/Facebook) and Reddit APIs — stateful authentication and automated token refresh for 100+ clients.</li>
-                <li>Optimized backend routing and asynchronous processing for an AI-driven SaaS: <b>25% lower</b> JSON payload latency, <b>40% faster</b> cross-platform content deployment.</li>
-                <li>Enforced <b>99.9% synchronization accuracy</b> across distributed third-party states with dynamic webhooks and redirect URIs, powering real-time preview and approval workflows.</li>
-              </ul>
-              <p class="row-tech">React / Spring Boot / OAuth 2.0 / Webhooks</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="row fade-in">
-          <button class="row-head" aria-expanded="false">
-            <span class="row-when">May 2025 —<br />Aug 2025</span>
-            <span class="row-title">
-              <strong>Intellicrane Tech</strong>
-              <em>Software Engineer Intern · Backend &amp; Computer Vision</em>
-            </span>
-            <span class="row-gist">95% defect detection on live assembly lines</span>
-            <span class="row-plus" aria-hidden="true"></span>
-          </button>
-          <div class="row-body">
-            <div class="row-body-inner">
-              <ul>
-                <li>Deployed a hardware-in-the-loop computer vision pipeline with <b>YOLOv5</b> and Flask — automated QA and real-time bug triaging at a <b>95% defect detection rate</b> on high-throughput lines.</li>
-                <li>Cut edge-device inference latency by <b>30%</b> via model quantization, alongside a decoupled AWS S3 media ingestion service.</li>
-                <li>Architected an automated black/white-box test generation suite in PyTest, lifting deployment reliability by <b>20%</b>.</li>
-              </ul>
-              <p class="row-tech">YOLOv5 / Flask / AWS S3 / PyTest</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="row fade-in">
-          <button class="row-head" aria-expanded="false">
-            <span class="row-when">Jun 2024 —<br />Sep 2024</span>
-            <span class="row-title">
-              <strong>LBASE Technology</strong>
-              <em>Full Stack Developer Intern · E-commerce</em>
-            </span>
-            <span class="row-gist">High-concurrency platform, +40% conversion</span>
-            <span class="row-plus" aria-hidden="true"></span>
-          </button>
-          <div class="row-body">
-            <div class="row-body-inner">
-              <ul>
-                <li>Architected the backend and merchant frontend of a high-concurrency e-commerce platform with React, TypeScript, and Spring Boot — <b>+40% user conversion</b>.</li>
-                <li>Slashed API latency <b>30%</b> under traffic spikes with a normalized PostgreSQL schema and Redis cache-aside pattern.</li>
-                <li>Guaranteed <b>100% ACID integrity</b> on Stripe payments; Docker + GitHub Actions CI/CD accelerated delivery cycles by 15%.</li>
-              </ul>
-              <p class="row-tech">TypeScript / PostgreSQL / Redis / Stripe / Docker</p>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section class="section" id="projects">
-      <div class="section-head fade-in">
-        <span class="sec-no">02</span>
-        <h2>Projects</h2>
-        <span class="sec-note">open source &amp; applied AI</span>
-      </div>
-
-      <div class="projects">
-        <article class="project fade-in">
-          <div class="project-no">01</div>
-          <p class="project-label">Google Summer of Code 2026 · Python Software Foundation</p>
-          <h3>Autonomous “vibecoding” AI agent</h3>
-          <p class="project-desc">
-            An accepted GSoC project: an LLM tool-calling agent that writes and runs
-            game scripts inside a custom <b>Godot Engine</b> build — with a non-blocking
-            background worker so AI never stalls the render thread. Includes C-level
-            contributions to <b>pocketpy</b> (<code>operator.itemgetter</code>,
-            <code>typing.ReadOnly</code>) and its build pipeline.
-          </p>
-          <p class="row-tech">C / Python / LLM tool calling / Godot</p>
-        </article>
-
-        <article class="project fade-in d1">
-          <div class="project-no">02</div>
-          <p class="project-label">Personal project · Dec 2025 — present</p>
-          <h3>Serverless AI support agent</h3>
-          <p class="project-desc">
-            An autonomous mental-health support agent on <b>Spring Boot 3</b> + React.
-            A <b>RAG</b> pipeline backed by PgVector answers in under a second;
-            tool calling via <b>MCP</b> reaches external wellness APIs; the whole thing
-            runs serverless on AWS Lambda and ECS with near-zero idle cost.
-          </p>
-          <p class="row-tech">Java 21 / PgVector / MCP / AWS Lambda · ECS</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ TOOLBOX ============ -->
-    <section class="section" id="toolbox">
-      <div class="section-head fade-in">
-        <span class="sec-no">03</span>
-        <h2>Toolbox</h2>
-      </div>
-      <dl class="tools fade-in">
-        <div class="tool-line"><dt>Languages</dt><dd>Java · Python · TypeScript · C · SQL · JavaScript</dd></div>
-        <div class="tool-line"><dt>Backend &amp; cloud</dt><dd>Spring Boot 3 · AWS (S3, Lambda, ECS) · PostgreSQL · Redis · Docker · Node.js</dd></div>
-        <div class="tool-line"><dt>AI &amp; architecture</dt><dd>RAG · AI agents · MCP · LangChain · Microservices · Serverless</dd></div>
-        <div class="tool-line"><dt>Frontend &amp; tools</dt><dd>React · Next.js · Tailwind CSS · GitHub Actions · PyTest · Godot</dd></div>
-      </dl>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section class="section hello" id="hello">
-      <div class="section-head fade-in">
-        <span class="sec-no">04</span>
-        <h2>Contact</h2>
-      </div>
-      <a class="hello-big fade-in" href="mailto:chen.12215@buckeyemail.osu.edu">
-        Say hello<span class="accent">.</span>
-      </a>
-      <div class="hello-links fade-in d1">
-        <a href="mailto:chen.12215@buckeyemail.osu.edu"><span>Email</span>chen.12215@buckeyemail.osu.edu</a>
-        <a href="https://github.com/Steve5829" target="_blank" rel="noopener"><span>GitHub</span>github.com/Steve5829</a>
-        <a href="https://www.linkedin.com/in/steve-chen-593265366/" target="_blank" rel="noopener"><span>LinkedIn</span>steve-chen</a>
-        <a href="assets/Steve_Chen_Resume.pdf" target="_blank" rel="noopener"><span>Résumé</span>PDF, one page ↓</a>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>© 2026 Steve Chen</span>
-      <span>·</span>
-      <span>Designed &amp; built by hand — no template</span>
-    </footer>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Steve Chen — Software Engineer · Class of 2027</title><meta name="description" content="Software engineer working across backend systems, AI developer tools, and native runtimes. Ohio State CSE, May 2027. GSoC 2026 and merged pocketpy contributions."><meta name="theme-color" content="#132c29"><meta property="og:title" content="Steve Chen — Software Engineer · Class of 2027"><meta property="og:description" content="Software engineer working across backend systems, AI developer tools, and native runtimes. Ohio State CSE, May 2027. GSoC 2026 and merged pocketpy contributions."><meta property="og:type" content="website"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header container">
+  <a class="nav-mark" href="index.html" aria-label="Steve Chen home"><span class="monogram" aria-hidden="true">s<span>c</span></span>Steve Chen<span class="brand-dot">.</span></a>
+  <nav class="nav-links" aria-label="Main navigation"><a href="index.html#work">Work</a><a href="notes.html">Notes</a><a href="lab.html">Lab</a><a class="nav-resume" href="assets/Steve_Chen_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav>
+</header>
+<main id="main">
+<section class="hero container" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow availability"><span class="status-dot"></span> Building toward 2027 new grad</p>
+    <h1 id="hero-title">From the runtime<br>to the <span class="accent-text">real world.</span></h1>
+    <p class="hero-description">I’m Steve, a software engineer building backend systems, AI developer tools, and the native code underneath them.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="mailto:hxchen789@gmail.com">Let’s connect <span aria-hidden="true">↗</span></a></div>
+    <div class="hero-person"><img src="assets/avatar-crop.png" alt="Steve Chen" width="48" height="48"><p><strong>Computer Science &amp; Engineering</strong><span>The Ohio State University · May 2027</span></p></div>
+  </div>
+  <aside class="code-card" aria-label="Featured open-source contribution">
+    <div class="code-top"><span><i></i><i></i><i></i></span><span>pocketpy / upstream</span><span class="code-file">C + Python</span></div>
+    <div class="code-card-body"><p class="code-kicker">SMALL DETAIL. REAL CONSEQUENCES.</p><h2>A number should survive<br>the round trip.</h2><p class="code-explainer">Making JSON numeric serialization behave predictably in an embedded Python runtime.</p>
+    <div class="code-snippet" aria-label="Illustrative round-trip invariant"><span class="code-comment"># the invariant</span><code><span class="code-line"><b>01</b> value = <em>9007199254740993</em></span><span class="code-line"><b>02</b> payload = json.dumps(value)</span><span class="code-line"><b>03</b> <strong>assert</strong> json.loads(payload) == value</span></code></div>
+    <div class="code-bottom"><span class="merged-badge"><span aria-hidden="true">✓</span> Merged upstream</span><a href="https://github.com/pocketpy/pocketpy/pull/519">Read PR #519 <span aria-hidden="true">↗</span></a></div></div>
+  </aside>
+</section>
+<div class="proof-strip container" aria-label="Background highlights"><p><span class="proof-symbol" aria-hidden="true">✳</span><span><strong>Google Summer of Code ’26</strong><small>Python Software Foundation · pocketpy</small></span></p><p><span class="proof-symbol" aria-hidden="true">⌘</span><span><strong>Contributing where it counts</strong><small>Accepted upstream runtime changes</small></span></p><p><span class="proof-symbol" aria-hidden="true">↗</span><span><strong>From intern to new grad</strong><small>Backend · AI tooling · Native systems</small></span></p></div>
+<section class="section container" id="work" aria-labelledby="work-title">
+  <div class="section-head"><div><p class="eyebrow">01 / Selected work</p><h2 id="work-title">Built to be used.<br>Open to be inspected.</h2></div><p>Tools, systems, and the decisions<br class="desktop-break"> that make them work.</p></div>
+  <div class="project-grid">
+    <article class="project-card"><a class="project-visual vibe-visual" href="case-study.html?id=godot" tabindex="-1" aria-hidden="true"><span class="visual-label">CONCEPT / EDITOR WORKFLOW</span><div class="vibe-window"><div class="window-top"><span>Godot Vibe</span><span>⌘</span></div><div class="vibe-prompt"><span>✳</span> Turn an idea into an asset.</div><div class="pipeline"><span>Prompt</span><b>→</b><span class="highlight">Validated plan</span><b>→</b><span>Scene</span></div><div class="mini-tiles"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><span class="visual-caption">GDScript editor · FastAPI orchestration</span></a><div class="project-copy"><div class="project-meta"><span>01 / Developer tools</span><span>GSoC 2026</span></div><h3><a href="case-study.html?id=godot">Godot Vibe Plugin <span aria-hidden="true">↗</span></a></h3><p>Prompt-driven assets and scene automation inside Godot, with structured plans and a shared image-provider pipeline.</p><ul class="tag-list" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>GDScript</li></ul><div class="project-links"><a href="case-study.html?id=godot">Read the case study →</a><a href="https://github.com/Steve5829/godot-vibe-plugin/tree/v2">Source ↗</a></div></div></article>
+    <article class="project-card"><a class="project-visual physics-visual" href="case-study.html?id=spelltide" tabindex="-1" aria-hidden="true"><span class="visual-label">CONCEPT / NATIVE PHYSICS</span><div class="world-grid"><div class="world-boundary"></div><div class="world-object object-one"></div><div class="world-object object-two"></div><div class="world-object object-three"></div><span class="contact-point"></span><div class="physics-axis"></div></div><span class="physics-pill">position → contact → resolve</span><span class="visual-caption">A tile world with no hard edges.</span></a><div class="project-copy"><div class="project-meta"><span>02 / Game systems</span><span>Native extension</span></div><h3><a href="case-study.html?id=spelltide">SpellTide / sbx <span aria-hidden="true">↗</span></a></h3><p>Cube-body physics for a wrap-around world. Collision queries, contact debugging, and the details between motion and stability.</p><ul class="tag-list" aria-label="Technologies"><li>C++17</li><li>Godot</li><li>pocketpy</li></ul><div class="project-links"><a href="case-study.html?id=spelltide">Read the case study →</a><a href="https://github.com/Steve5829/sbx_extension">Source ↗</a></div></div></article>
+    <article class="project-card"><a class="project-visual trace-visual" href="lab.html" tabindex="-1" aria-hidden="true"><span class="visual-label">CONCEPT / POLICY CHECKS</span><div class="trace-window"><div class="trace-row"><span class="trace-dot"></span><span>Plan received</span><code>schema: v1</code></div><div class="trace-row"><span class="trace-dot"></span><span>Policy evaluated</span><code>pass</code></div><div class="trace-row"><span class="trace-dot muted-dot"></span><span>Unsafe path rejected</span><code>reject</code></div><div class="trace-result"><span>One plan.</span><strong>Clear boundaries.</strong></div></div><span class="visual-caption">Inspect the decision. Follow the trace.</span></a><div class="project-copy"><div class="project-meta"><span>03 / Backend reliability</span><span class="new-label">New build</span></div><h3><a href="lab.html">TraceGate <span aria-hidden="true">↗</span></a></h3><p>A deterministic policy gate for structured tool plans, with audit trails and adversarial replay cases. Inspect its recorded decisions in the companion lab.</p><ul class="tag-list" aria-label="Topics"><li>Policy validation</li><li>Replay</li><li>Audit traces</li></ul><div class="project-links"><a href="lab.html">Open the lab →</a><a href="https://github.com/Steve5829/tracegate">Source ↗</a></div></div></article>
+    <article class="project-card"><a class="project-visual agent-visual" href="https://github.com/Steve5829/emotion-ai-agent" tabindex="-1" aria-hidden="true"><span class="visual-label">CONCEPT / RETRIEVAL + ACTION</span><div class="agent-flow"><span class="agent-question">A request with more than one step.</span><div class="agent-branches"><div><span class="branch-icon">⌕</span><strong>Retrieve</strong><small>PgVector context</small></div><span class="branch-plus">+</span><div><span class="branch-icon">↗</span><strong>Act</strong><small>MCP tools</small></div></div><div class="agent-answer"><i></i> Context → plan → tool result</div></div><span class="visual-caption">Java 21 · Spring Boot · React</span></a><div class="project-copy"><div class="project-meta"><span>04 / Applied AI</span><span>Personal project</span></div><h3><a href="https://github.com/Steve5829/emotion-ai-agent">AI Support Agent <span aria-hidden="true">↗</span></a></h3><p>A Java-based agent that combines retrieved context with external tool calls, connecting a React interface to a Spring backend.</p><ul class="tag-list" aria-label="Technologies"><li>Java 21</li><li>Spring Boot</li><li>PgVector</li></ul><div class="project-links"><a href="https://github.com/Steve5829/emotion-ai-agent">Explore the source →</a><a href="notes.html?category=AI+tooling">Related notes ↗</a></div></div></article>
+  </div>
+</section>
+<section class="upstream-section container" aria-labelledby="upstream-title"><div><p class="eyebrow">The small changes matter, too.</p><h2 id="upstream-title">Working in the open.</h2><p>Focused contributions to an existing interpreter.<br>Real changes, reviewed and merged upstream.</p><a class="text-link" href="case-study.html?id=pocketpy">The contribution story →</a></div><div class="upstream-list"><a href="https://github.com/pocketpy/pocketpy/pull/519"><span class="pr-number">#519</span><span><strong>JSON integer &amp; float serialization</strong><small>pocketpy · Merged June 18, 2026</small></span><span aria-hidden="true">↗</span></a><a href="https://github.com/pocketpy/pocketpy/pull/487"><span class="pr-number">#487</span><span><strong>itemgetter &amp; typing placeholders</strong><small>pocketpy · Merged March 26, 2026</small></span><span aria-hidden="true">↗</span></a></div></section>
+<section class="section container" id="experience" aria-labelledby="experience-title"><div class="section-head"><div><p class="eyebrow">02 / Experience</p><h2 id="experience-title">Different contexts.<br>The same curiosity.</h2></div><p>Open source, startup integrations,<br class="desktop-break"> industrial vision, and commerce.</p></div><div class="experience-list">
+<details class="experience-item" open><summary><span class="experience-date">May — Aug 2026</span><span class="experience-name"><strong>Python Software Foundation</strong><span>Google Summer of Code · pocketpy</span></span><span class="experience-kind">Open source</span><span class="details-plus" aria-hidden="true">+</span></summary><div class="experience-body"><p>Built the Godot Vibe Plugin for asset generation, image editing, and scene automation. Developed a schema-based planning workflow and a shared provider interface; contributed standard-library features and numeric serialization fixes to pocketpy.</p><div class="tag-list"><span>Python / C</span><span>Godot</span><span>FastAPI</span></div><a class="text-link" href="case-study.html?id=godot">Explore the work →</a></div></details>
+<details class="experience-item"><summary><span class="experience-date">Jan 2026 — Present</span><span class="experience-name"><strong>K.C. Voicebotics</strong><span>Software Engineer Intern · Full Stack &amp; Platform Integrations</span></span><span class="experience-kind">Voice AI</span><span class="details-plus" aria-hidden="true">+</span></summary><div class="experience-body"><p>Built tenant-aware OAuth integrations with dynamic redirects and token refresh. Worked on Spring Boot routing, batched downstream API calls, and idempotent webhooks with backoff retries for operator preview and approval workflows.</p><div class="tag-list"><span>Spring Boot</span><span>React</span><span>OAuth 2.0</span></div><a class="text-link" href="case-study.html?id=integrations">Read the case study →</a></div></details>
+<details class="experience-item"><summary><span class="experience-date">May — Aug 2025</span><span class="experience-name"><strong>Intellicrane Tech</strong><span>Software Engineer Intern · Backend &amp; Computer Vision</span></span><span class="experience-kind">Industrial automation</span><span class="details-plus" aria-hidden="true">+</span></summary><div class="experience-body"><p>Worked on a hardware-in-the-loop inspection service using YOLOv5 and Flask. Applied post-training quantization for edge inference, decoupled media ingestion through AWS S3, and tested REST and storage paths with PyTest.</p><div class="tag-list"><span>YOLOv5</span><span>Flask</span><span>AWS S3</span></div></div></details>
+<details class="experience-item"><summary><span class="experience-date">Jun — Sep 2024</span><span class="experience-name"><strong>LBASE Technology</strong><span>Full Stack Software Engineer Intern</span></span><span class="experience-kind">E-commerce</span><span class="details-plus" aria-hidden="true">+</span></summary><div class="experience-body"><p>Improved PostgreSQL access patterns with schema normalization and covering indexes, supported by Redis cache-aside. Hardened Stripe payment retries with idempotency keys and transactional writes, with GitHub Actions checks ahead of Docker deployments.</p><div class="tag-list"><span>PostgreSQL</span><span>Redis</span><span>Stripe</span></div></div></details>
+</div></section>
+<section class="notebook-teaser container" aria-labelledby="notebook-title"><div><p class="eyebrow">03 / Field notes</p><h2 id="notebook-title">Keep the lesson.<br>Link the source.</h2><p>A growing notebook of systems ideas from building, reading, and debugging. Short explanations, connected to real work.</p><a class="button button-dark" href="notes.html">Browse the notebook <span aria-hidden="true">↗</span></a></div><div class="teaser-notes"><a href="notes.html?note=serialization-invariants"><span>RUNTIME / 01</span><h3>A round trip is a test.<br>Determinism is a property.</h3><span class="teaser-arrow" aria-hidden="true">↗</span></a><a href="notes.html?note=plan-boundary"><span>AI TOOLING / 02</span><h3>Let the model propose.<br>Let the application decide.</h3><span class="teaser-arrow" aria-hidden="true">↗</span></a></div></section>
+<section class="contact-section container" id="contact"><p class="eyebrow">What’s next / Class of 2027</p><h2>Let’s build something<br><span class="accent-text">worth understanding.</span></h2><div class="contact-row"><p>I’m looking for 2027 new-grad software engineering opportunities,<br class="desktop-break"> especially in backend systems and AI developer tools.</p><a class="button button-primary" href="mailto:hxchen789@gmail.com">Say hello <span aria-hidden="true">↗</span></a></div><a class="contact-email" href="mailto:hxchen789@gmail.com">hxchen789@gmail.com</a></section>
+</main><footer class="site-footer container"><a class="nav-mark" href="index.html">Steve Chen<span class="brand-dot">.</span></a><p>Columbus, Ohio · CSE @ Ohio State · May 2027</p><div><a href="https://github.com/Steve5829">GitHub ↗</a><a href="https://www.linkedin.com/in/steve-chen-593265366/">LinkedIn ↗</a><a href="mailto:hxchen789@gmail.com">Email ↗</a></div></footer><script src="script.js" defer></script></body></html>
