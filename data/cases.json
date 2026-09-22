@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "id": "godot",
+      "title": "AI tools that fit the editor",
+      "subtitle": "Godot Vibe Plugin · Google Summer of Code 2026",
+      "period": "May – August 2026",
+      "role": "GSoC contributor · editor plugin and backend",
+      "tags": [
+        "Developer tools",
+        "Python",
+        "FastAPI",
+        "GDScript",
+        "Structured planning"
+      ],
+      "summary": "Built an editor workflow for prompt-driven asset generation, image editing, and scene automation during Google Summer of Code with the Python Software Foundation and pocketpy.",
+      "sections": [
+        {
+          "title": "The problem",
+          "text": "Generating an asset is only one part of a useful AI tool. The result also needs to fit an existing editor workflow, and the model's output needs a clear boundary before it changes a project."
+        },
+        {
+          "title": "My contribution",
+          "text": "I built a GDScript editor plugin backed by FastAPI. For scene planning, I used a validated plan schema: the model returns structured data, and application code decides how to apply it. A deterministic rule-based fallback handles model unavailability."
+        },
+        {
+          "title": "The decision",
+          "text": "I put provider-specific behavior behind a shared interface for PixelLab and GPT Image, then separated art-style content from the generation code. A five-stage pipeline uses JSON style packs so extending a style does not require changing the implementation."
+        },
+        {
+          "title": "Where it landed",
+          "text": "The delivered workflow connects asset generation, editing, and scene automation inside Godot, with reusable style definitions and regression coverage for the generation pipeline."
+        },
+        {
+          "title": "What I took forward",
+          "text": "My focus was making an AI capability usable as a developer tool: constrain what the model can request, keep provider differences contained, and make recurring content changes data-driven."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Godot Vibe Plugin · current v2 branch",
+          "url": "https://github.com/Steve5829/godot-vibe-plugin/tree/v2"
+        },
+        {
+          "label": "Related pocketpy contributions",
+          "url": "case-study.html?id=pocketpy"
+        }
+      ]
+    },
+    {
+      "id": "pocketpy",
+      "title": "Small changes inside a Python interpreter",
+      "subtitle": "Merged contributions to pocketpy",
+      "period": "March – June 2026",
+      "role": "Open-source contributor",
+      "tags": [
+        "Open source",
+        "C",
+        "Python",
+        "Serialization",
+        "Code generation"
+      ],
+      "summary": "Contributed upstream fixes and standard-library compatibility features to pocketpy, with merged pull requests that make the work directly reviewable.",
+      "sections": [
+        {
+          "title": "The problem",
+          "text": "An embedded interpreter needs predictable behavior at small API boundaries. Missing standard-library helpers and numeric serialization differences can surface as application-level incompatibilities."
+        },
+        {
+          "title": "My contribution",
+          "text": "In PR #487, I added operator.itemgetter and typing placeholders for ReadOnly and Required, then regenerated the embedded bindings through prebuild.py. The change was merged on March 26, 2026."
+        },
+        {
+          "title": "The decision",
+          "text": "A later contribution focused on JSON integer and floating-point serialization. PR #519 records the implementation and subsequent round-trip refinements, and was merged on June 18, 2026."
+        },
+        {
+          "title": "Where it landed",
+          "text": "Both contributions were accepted into the upstream project. The linked pull requests show the implementation, discussion, and merge history."
+        },
+        {
+          "title": "What I took forward",
+          "text": "This work connects application-level Python behavior to the internals of an embedded runtime, including generated bindings and numeric representation."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Merged PR #487 — standard-library helpers",
+          "url": "https://github.com/pocketpy/pocketpy/pull/487"
+        },
+        {
+          "label": "Merged PR #519 — JSON numeric serialization",
+          "url": "https://github.com/pocketpy/pocketpy/pull/519"
+        }
+      ]
+    },
+    {
+      "id": "spelltide",
+      "title": "Debugging the boundary between contact and motion",
+      "subtitle": "SpellTide / sbx_extension · Godot native systems",
+      "period": "March 2026 – Present",
+      "role": "Native physics contributor",
+      "tags": [
+        "C++17",
+        "Godot",
+        "Collision detection",
+        "Spatial partitioning",
+        "Debugging"
+      ],
+      "summary": "Contributed to the C++ physics layer of a wrap-around tile world, focusing on cube-body contacts, collision debugging, and the boundary between simulation state and rendering.",
+      "sections": [
+        {
+          "title": "The problem",
+          "text": "A small visible symptom—an object shaking against a wall—can come from several different layers: contact detection, penetration correction, the collision normal, or how the controller applies motion."
+        },
+        {
+          "title": "My contribution",
+          "text": "I investigated the behavior by narrowing flat-wall and rounded-corner cases, examining contact creation/removal events, and tracing separation and position values. This made it possible to distinguish a contact repeatedly disappearing from a contact that remained active but resolved unstably."
+        },
+        {
+          "title": "The decision",
+          "text": "The useful design boundary was between character control and physical motion. A controller that resets velocity every frame has different requirements from a body that preserves momentum. I also learned to evaluate rendering optimizations against whether geometry is shared and how often state changes."
+        },
+        {
+          "title": "Where it landed",
+          "text": "The work sits within a native extension that exposes cube-body physics, chunked broad-phase queries, collision callbacks, and torus tilemap support to Godot and PocketPy."
+        },
+        {
+          "title": "What I took forward",
+          "text": "The fastest route through a difficult systems bug was to choose a discriminating observation, collect it at the right layer, and revise the hypothesis when the evidence changed."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Source — sbx_extension",
+          "url": "https://github.com/Steve5829/sbx_extension"
+        }
+      ]
+    },
+    {
+      "id": "integrations",
+      "title": "Reliable integrations across tenant boundaries",
+      "subtitle": "K.C. Voicebotics · Full-stack and platform integrations",
+      "period": "January 2026 – Present",
+      "role": "Software Engineer Intern · platform integrations",
+      "tags": [
+        "Backend",
+        "OAuth 2.0",
+        "Spring Boot",
+        "React",
+        "Idempotency"
+      ],
+      "summary": "Built backend integration workflows for a conversational voice-AI product, with tenant-aware authentication and failure handling exposed through a React operator console.",
+      "sections": [
+        {
+          "title": "The problem",
+          "text": "A third-party integration becomes an operational concern when multiple tenants have different credentials and a provider can fail, retry, or deliver the same event more than once."
+        },
+        {
+          "title": "My contribution",
+          "text": "I engineered an OAuth 2.0 pipeline with dynamic redirect URIs and per-tenant token refresh. Integration onboarding moved toward configuration entries, reducing repeated implementation work for new connections."
+        },
+        {
+          "title": "The decision",
+          "text": "I used idempotent webhook handlers and exponential-backoff retries to keep external state consistent under failure. On the request path, I restructured Spring Boot routing and batched downstream API calls, with a React console supporting preview and approval workflows."
+        },
+        {
+          "title": "Where it landed",
+          "text": "The work connects tenant authentication, asynchronous requests, and retry behavior into an operator-facing workflow, with configuration-based onboarding and explicit handling for repeated or failed provider events."
+        },
+        {
+          "title": "What I took forward",
+          "text": "The integration boundary needs explicit behavior for repeat delivery, stale credentials, and partial failure—not just a successful first request."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Resume · role and contribution scope",
+          "url": "assets/Steve_Chen_Resume.pdf"
+        },
+        {
+          "label": "Related note · OAuth callback state",
+          "url": "notes.html?note=oauth-state"
+        }
+      ]
+    }
+  ]
+}

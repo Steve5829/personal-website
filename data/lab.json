@@ -1,0 +1,1657 @@
+{
+  "format_version": 1,
+  "source": "https://github.com/Steve5829/tracegate",
+  "policy": {
+    "policy_version": 1,
+    "name": "portfolio-demo",
+    "allowed_tools": [
+      "file.read",
+      "file.write",
+      "http.request"
+    ],
+    "allowed_path_prefixes": [
+      "workspace"
+    ],
+    "allowed_hosts": [
+      "api.github.com",
+      "docs.python.org"
+    ],
+    "allowed_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "allow_overwrite": false,
+    "max_steps": 16,
+    "max_read_bytes": 65536,
+    "max_write_bytes": 32768,
+    "max_response_bytes": 262144,
+    "max_timeout_ms": 10000
+  },
+  "evaluation": {
+    "evaluation_version": 1,
+    "suite_sha256": "72a4ab5e47a6442ed9683c3c52178efafd54b2ae1d84d178328dd4de86ea24aa",
+    "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "deterministic": true,
+    "reason_counts": {
+      "http.method": 1,
+      "http.response_limit": 1,
+      "http.timeout": 1,
+      "path.invalid": 4,
+      "path.outside_allowlist": 1,
+      "plan.step_limit": 1,
+      "read.limit": 1,
+      "schema.invalid": 3,
+      "url.credentials": 1,
+      "url.fragment": 1,
+      "url.host": 3,
+      "url.port": 1,
+      "url.scheme": 1,
+      "write.limit": 1,
+      "write.overwrite": 1
+    },
+    "cases": [
+      {
+        "name": "documentation-review-dry-run",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "dry-run",
+        "actual_outcome": "dry-run",
+        "expected_codes": [],
+        "actual_codes": [],
+        "report_sha256": "0da30c8f6f60355c5365bade19ea405d98a3678d3bc337d7e2d445a7ad70ec7d"
+      },
+      {
+        "name": "documentation-review-approval",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "approve",
+        "actual_outcome": "approve",
+        "expected_codes": [],
+        "actual_codes": [],
+        "report_sha256": "8abaea388c88741588ee0a3f86bf4b76a989dfdb3861109edf08bb368c424ef6"
+      },
+      {
+        "name": "github-readonly-request",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "dry-run",
+        "actual_outcome": "dry-run",
+        "expected_codes": [],
+        "actual_codes": [],
+        "report_sha256": "b0c2e41f9ebba4dcc8b7346f3a8ff75430052c1e838eab7fae15b981d6a13162"
+      },
+      {
+        "name": "blocked-export",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "http.method",
+          "path.invalid",
+          "url.host"
+        ],
+        "actual_codes": [
+          "http.method",
+          "path.invalid",
+          "url.host"
+        ],
+        "report_sha256": "2facb9bf14695d43031e2dec1f4053da3289b1cb7845720cad6193521a181a3b"
+      },
+      {
+        "name": "path-prefix-collision",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "path.outside_allowlist"
+        ],
+        "actual_codes": [
+          "path.outside_allowlist"
+        ],
+        "report_sha256": "2bafddeb9fa3f58757493e9b30cfd0ae15f4fcb870a6a505efd0553210da3a4e"
+      },
+      {
+        "name": "nested-traversal",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "path.invalid"
+        ],
+        "actual_codes": [
+          "path.invalid"
+        ],
+        "report_sha256": "d6dfa996f8f33ddd6a27131bb97f194f83d1287c73dfa5b32a7d55561c20b147"
+      },
+      {
+        "name": "windows-path",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "path.invalid"
+        ],
+        "actual_codes": [
+          "path.invalid"
+        ],
+        "report_sha256": "e5fb919788975307aef0c920f9b5c12a32e231cf4033a16046855786ee3e1015"
+      },
+      {
+        "name": "encoded-traversal",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "path.invalid"
+        ],
+        "actual_codes": [
+          "path.invalid"
+        ],
+        "report_sha256": "8be49d6e2b414d1c5f5189d804947df40066527f73e0928dac5f01e2d98452b7"
+      },
+      {
+        "name": "boolean-byte-limit",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "schema.invalid"
+        ],
+        "actual_codes": [
+          "schema.invalid"
+        ],
+        "report_sha256": "b801812859bbd73b732dce910e17241dea1b9f91bb037d131466373d94b81cfc"
+      },
+      {
+        "name": "unknown-tool",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "schema.invalid"
+        ],
+        "actual_codes": [
+          "schema.invalid"
+        ],
+        "report_sha256": "79f47b6bce1d5a295808e82b2d9c769d7c2a5459f3dd9d9c3d0d06941813590d"
+      },
+      {
+        "name": "unknown-argument",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "schema.invalid"
+        ],
+        "actual_codes": [
+          "schema.invalid"
+        ],
+        "report_sha256": "45ed8f310bfcc4896ef7ccba0052d607e184a74ec9b99a2e449db2b58fcac98c"
+      },
+      {
+        "name": "host-suffix-confusion",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.host"
+        ],
+        "actual_codes": [
+          "url.host"
+        ],
+        "report_sha256": "a5dc6a8fa0840a1346660f4e8152a0e48758ade743face82dd3ac6a9a8d5d738"
+      },
+      {
+        "name": "url-credentials",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.credentials"
+        ],
+        "actual_codes": [
+          "url.credentials"
+        ],
+        "report_sha256": "c29a45eb04c3f09a4f01d4ab99dcf83ac26d5548fc268d66ee5fe2589692b978"
+      },
+      {
+        "name": "insecure-scheme",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.scheme"
+        ],
+        "actual_codes": [
+          "url.scheme"
+        ],
+        "report_sha256": "228c4de9407efa1cf5dc7db1da5031f583b282a12713df8c2590513070326dac"
+      },
+      {
+        "name": "custom-port",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.port"
+        ],
+        "actual_codes": [
+          "url.port"
+        ],
+        "report_sha256": "526dfe67af7b844de97881289b0a085b2c792ef1639170b30ec6bf7aaf4dca1a"
+      },
+      {
+        "name": "oversized-read",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "read.limit"
+        ],
+        "actual_codes": [
+          "read.limit"
+        ],
+        "report_sha256": "4f7401a1b03f35e8a3c3e4565ccadfd1de7541147f57ae6e15d98beb55bb5894"
+      },
+      {
+        "name": "oversized-response",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "http.response_limit"
+        ],
+        "actual_codes": [
+          "http.response_limit"
+        ],
+        "report_sha256": "de6e9f0ea2243abecb06c91893e5cfed108f79300c5b63bf89996899bb023cc2"
+      },
+      {
+        "name": "long-timeout",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "http.timeout"
+        ],
+        "actual_codes": [
+          "http.timeout"
+        ],
+        "report_sha256": "31e5f45491c8ffa740656352d98b99b894ec179b24515daa69d844341c4913f2"
+      },
+      {
+        "name": "overwrite-refused",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "write.overwrite"
+        ],
+        "actual_codes": [
+          "write.overwrite"
+        ],
+        "report_sha256": "714de147f4da9d537b509386428241dd87d2c62040329f39686645bfa7fd7a17"
+      },
+      {
+        "name": "utf8-write-size",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "write.limit"
+        ],
+        "actual_codes": [
+          "write.limit"
+        ],
+        "report_sha256": "569f59b75a5f511fffac2ba45c54e29c22ea9ac7655cc08e892e71bf37f0c3a8"
+      },
+      {
+        "name": "empty-write-allowed",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "dry-run",
+        "actual_outcome": "dry-run",
+        "expected_codes": [],
+        "actual_codes": [],
+        "report_sha256": "573e78fd4fb3f8e6b06f803f300a980d2e6bf8296c58c005b97b026534a29922"
+      },
+      {
+        "name": "explicit-https-port",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "dry-run",
+        "actual_outcome": "dry-run",
+        "expected_codes": [],
+        "actual_codes": [],
+        "report_sha256": "78c211f0ca3c25e0739edb47fe06b6676c8a45ad38c9e455c14a12bdfed44dbc"
+      },
+      {
+        "name": "fragment-refused",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.fragment"
+        ],
+        "actual_codes": [
+          "url.fragment"
+        ],
+        "report_sha256": "c4bee835e22439fac4c75757b09b65964cd37d93e7474f1b3505b94353f6e10b"
+      },
+      {
+        "name": "ipv4-loopback-refused",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "url.host"
+        ],
+        "actual_codes": [
+          "url.host"
+        ],
+        "report_sha256": "1d92da7f9f95c17b68ce1d9ac8886362264fd13863cf6d4722b3a21b8a87fc01"
+      },
+      {
+        "name": "plan-step-budget",
+        "passed": true,
+        "deterministic": true,
+        "expected_outcome": "reject",
+        "actual_outcome": "reject",
+        "expected_codes": [
+          "plan.step_limit"
+        ],
+        "actual_codes": [
+          "plan.step_limit"
+        ],
+        "report_sha256": "57b76d4f1043cecb0e387dcb21ec6a550f517fdf4d476772f7f26b302d9d572c"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "documentation-review-dry-run",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org/3/library/json.html",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          },
+          {
+            "id": "write-review",
+            "tool": "file.write",
+            "args": {
+              "path": "workspace/reports/review.md",
+              "content": "# Review\nValidate tool arguments before policy evaluation.\n",
+              "overwrite": false
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "dry-run",
+        "mode": "dry-run",
+        "plan_sha256": "2daedf54d1dece2fe1ddeb3cd7c4a8fce95b3d37ddd3e4560a4905b11323f440",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "write-review",
+            "tool": "file.write",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "documentation-review-approval",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org/3/library/json.html",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          },
+          {
+            "id": "write-review",
+            "tool": "file.write",
+            "args": {
+              "path": "workspace/reports/review.md",
+              "content": "# Review\nValidate tool arguments before policy evaluation.\n",
+              "overwrite": false
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "approve",
+        "mode": "approve",
+        "plan_sha256": "2daedf54d1dece2fe1ddeb3cd7c4a8fce95b3d37ddd3e4560a4905b11323f440",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "write-review",
+            "tool": "file.write",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "github-readonly-request",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://api.github.com/repos/python/cpython",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "dry-run",
+        "mode": "dry-run",
+        "plan_sha256": "a06879bb4382b62e7e7a513be35ac85eda78a892e0275a50773ec746cc4f0df1",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "blocked-export",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "blocked-export",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "../../.ssh/id_ed25519",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://upload.example.net/collect",
+              "method": "POST",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "blocked-export",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "237b4d8d6b7a168f6c70b32de8c32eff011312dae676b367ed8f06a8cf6b1067",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "path.invalid",
+                "message": "path must be a canonical relative ASCII path without traversal, backslashes, encoding, or ambiguous trailing characters"
+              }
+            ]
+          },
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.host",
+                "message": "hostname is not an exact allowlist match"
+              },
+              {
+                "code": "http.method",
+                "message": "HTTP method is disabled by policy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "path-prefix-collision",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace-backup/private.txt",
+              "max_bytes": 4096
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "aadfd53e4ff8938c0005a0354c68dc1e1e1c46948539d3d2b6e81a1b1be228c7",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "path.outside_allowlist",
+                "message": "path is outside every allowed prefix"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "nested-traversal",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/../../secrets.txt",
+              "max_bytes": 4096
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "df3b6c8d9e2cfad1eb7d33ff26355a3e554d59a27e148b7bfd7a5483895fc3ac",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "path.invalid",
+                "message": "path must be a canonical relative ASCII path without traversal, backslashes, encoding, or ambiguous trailing characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "windows-path",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "C:\\Users\\Steve\\.ssh\\id_ed25519",
+              "max_bytes": 4096
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "38f845f5eba0ddc897bc5e2b8ed428cb7b9ce6afc082518b3f2fd91f8e877a4d",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "path.invalid",
+                "message": "path must be a canonical relative ASCII path without traversal, backslashes, encoding, or ambiguous trailing characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "encoded-traversal",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/%2e%2e/secrets.txt",
+              "max_bytes": 4096
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "5c006a3af1f3ba431e4bc0e20922fa6478fa1ca5dde51a8e6a544edc5ca82c4d",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "path.invalid",
+                "message": "path must be a canonical relative ASCII path without traversal, backslashes, encoding, or ambiguous trailing characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "boolean-byte-limit",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": true
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": null,
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "1cbdb27485d8a51595d99290124a998e479be8da34b1ee9a3f780a1f351c7a13",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [
+          {
+            "code": "schema.invalid",
+            "message": "steps[0].args.max_bytes must be an integer in [1, 16777216]"
+          }
+        ],
+        "checks": []
+      }
+    },
+    {
+      "name": "unknown-tool",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "shell",
+            "tool": "shell.exec",
+            "args": {
+              "command": "echo hello"
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": null,
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "70fd8c3747358446da8cda0d2211e00a5dbb77a12b380e69b1c52c0ba30b8976",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [
+          {
+            "code": "schema.invalid",
+            "message": "unknown tool: shell.exec"
+          }
+        ],
+        "checks": []
+      }
+    },
+    {
+      "name": "unknown-argument",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "unknown-argument",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096,
+              "follow_symlinks": true
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": null,
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "b29a97bd76a65bc5637b7185be067bc45c106ced8359a3d3e645caa8734e96df",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [
+          {
+            "code": "schema.invalid",
+            "message": "steps[0].args: unknown fields=['follow_symlinks'], missing fields=[]"
+          }
+        ],
+        "checks": []
+      }
+    },
+    {
+      "name": "host-suffix-confusion",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org.evil.example/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "e792c2b6c1a9f44977430ac000c86bd482f8d938810cda689ff4d39e32ec34f6",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.host",
+                "message": "hostname is not an exact allowlist match"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "url-credentials",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://user:password@docs.python.org/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "dc15a3752ba14cc7121f5ca1c62f12a22bce45294760220baba7b47eb29b2b6a",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.credentials",
+                "message": "URL credentials are prohibited"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "insecure-scheme",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "http://docs.python.org/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "f4c4e6b8bc3e1eecc5fae58831a32daa40254dbbbe1cc51fab376d7d4c8f5336",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.scheme",
+                "message": "only HTTPS URLs are permitted"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "custom-port",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org:8443/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "3e6a689d86dfdfdc5b195725d9348be591108314c4ce06ba1ee48a61eae26069",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.port",
+                "message": "only the default HTTPS port is permitted"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "oversized-read",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-context",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 65537
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "d5343c925c5b273ef6663c56f4f4ddf5460cf588ed95a17b744a23ce2456e448",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "read-context",
+            "tool": "file.read",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "read.limit",
+                "message": "requested read size exceeds policy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "oversized-response",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org/3/library/json.html",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 262145
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "c4be73224d787c1fa506dffb03ca1b0068614493661e4110e0b50c57199f76b4",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "http.response_limit",
+                "message": "requested response size exceeds policy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "long-timeout",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org/3/library/json.html",
+              "method": "GET",
+              "timeout_ms": 10001,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "8656ef5ea17bd986b26fbf4ac60924a24625e39fee15bb1c1b282dc0cc79759d",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "http.timeout",
+                "message": "requested timeout exceeds policy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "overwrite-refused",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "write-review",
+            "tool": "file.write",
+            "args": {
+              "path": "workspace/reports/review.md",
+              "content": "# Review\nValidate tool arguments before policy evaluation.\n",
+              "overwrite": true
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "4590cf6e0de738177261af73f93a98c4bba26e57c4fbc8aa852f81c56d92ba0d",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "write-review",
+            "tool": "file.write",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "write.overwrite",
+                "message": "overwriting files is disabled"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "utf8-write-size",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "write-review",
+            "tool": "file.write",
+            "args": {
+              "path": "workspace/reports/review.md",
+              "content": "界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界",
+              "overwrite": false
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "db8872f359d59a7c8a9c8715b932278119505933b25e32844d53fe6ac100f90f",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "write-review",
+            "tool": "file.write",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "write.limit",
+                "message": "UTF-8 content size exceeds policy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "empty-write-allowed",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "write-review",
+            "tool": "file.write",
+            "args": {
+              "path": "workspace/reports/review.md",
+              "content": "",
+              "overwrite": false
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "dry-run",
+        "mode": "dry-run",
+        "plan_sha256": "97f64ea45f292fea1e569a7a9f1d0aa81272968e07ed44f0126d8a07fa3ebe42",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "write-review",
+            "tool": "file.write",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "explicit-https-port",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org:443/3/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "dry-run",
+        "mode": "dry-run",
+        "plan_sha256": "856081b7e48aa18084c5256f5be082123396cfbbbde98951697d886d3d1abd17",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "fragment-refused",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://docs.python.org/3/#reference",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "b9a1ddd6dd8132c28f2d361a68dbd54ce046f0a217611010c96d5a2ecf29011a",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.fragment",
+                "message": "URL fragments are prohibited"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "ipv4-loopback-refused",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "fetch-docs",
+            "tool": "http.request",
+            "args": {
+              "url": "https://127.0.0.1/",
+              "method": "GET",
+              "timeout_ms": 5000,
+              "max_response_bytes": 65536
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "829383967e95d9fff81f7fe91c628490c32a5b3b752ec5fa91551413d2299b1b",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [],
+        "checks": [
+          {
+            "step_id": "fetch-docs",
+            "tool": "http.request",
+            "status": "reject",
+            "reasons": [
+              {
+                "code": "url.host",
+                "message": "hostname is not an exact allowlist match"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "plan-step-budget",
+      "plan": {
+        "schema_version": 1,
+        "plan_id": "docs-review",
+        "steps": [
+          {
+            "id": "read-0",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-1",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-2",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-3",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-4",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-5",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-6",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-7",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-8",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-9",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-10",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-11",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-12",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-13",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-14",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-15",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          },
+          {
+            "id": "read-16",
+            "tool": "file.read",
+            "args": {
+              "path": "workspace/notes/project.md",
+              "max_bytes": 4096
+            }
+          }
+        ]
+      },
+      "report": {
+        "report_version": 1,
+        "plan_id": "docs-review",
+        "outcome": "reject",
+        "mode": "dry-run",
+        "plan_sha256": "84b6cf0d2609cbfbbc0f17a1a1f9e620ebf75f97a6aee2f996c07c14dd9bad4b",
+        "policy_sha256": "30e061eb7e1c3db39f9004036449d1b3d5c44ad43fded1da536702a47addd72e",
+        "errors": [
+          {
+            "code": "plan.step_limit",
+            "message": "step count exceeds policy"
+          }
+        ],
+        "checks": [
+          {
+            "step_id": "read-0",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-1",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-2",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-3",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-4",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-5",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-6",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-7",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-8",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-9",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-10",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-11",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-12",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-13",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-14",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-15",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          },
+          {
+            "step_id": "read-16",
+            "tool": "file.read",
+            "status": "pass",
+            "reasons": []
+          }
+        ]
+      }
+    }
+  ]
+}

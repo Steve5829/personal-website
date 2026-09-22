@@ -1,0 +1,300 @@
+{
+  "notes": [
+    {
+      "id": "idempotency",
+      "category": "Backend",
+      "title": "A retry should preserve intent.",
+      "teaser": "A timeout tells you the response is missing. It does not tell you the operation failed.",
+      "body": [
+        "If a client loses its connection after a payment is created, repeating the request can repeat the charge. An idempotency key gives the server a way to recognize the same logical operation and return its recorded result.",
+        "The key belongs to an intent, so retries reuse it while a genuinely new operation gets a new key. A useful API also rejects reuse of a key with conflicting parameters. This makes retry behavior part of the contract, rather than a client-side guess."
+      ],
+      "related": "Connected to payment-flow work at LBASE and webhook handling at K.C. Voicebotics.",
+      "sources": [
+        {
+          "label": "Stripe · idempotent requests",
+          "url": "https://docs.stripe.com/api/idempotent_requests"
+        }
+      ]
+    },
+    {
+      "id": "oauth-state",
+      "category": "Backend",
+      "title": "The callback needs a memory of the request.",
+      "teaser": "OAuth state connects a returning authorization response to the browser flow that started it.",
+      "body": [
+        "An authorization code arriving at a callback endpoint is not enough context on its own. The application must connect that response to an authorization attempt it actually initiated. The state value helps bind those two parts of the flow and protect against cross-site request forgery.",
+        "Treat state validation as a required branch of the callback, not as optional metadata. Use an unpredictable value bound to the initiating session, validate it on return, and keep authorization context separate from arbitrary user-supplied redirects."
+      ],
+      "related": "Connected to tenant-aware OAuth integration work.",
+      "sources": [
+        {
+          "label": "OAuth 2.0 · state and CSRF protection",
+          "url": "https://www.rfc-editor.org/rfc/rfc6749#section-10.12"
+        },
+        {
+          "label": "Integration case study",
+          "url": "case-study.html?id=integrations"
+        }
+      ]
+    },
+    {
+      "id": "query-plans",
+      "category": "Backend",
+      "title": "An index is a hypothesis. Read the plan.",
+      "teaser": "The query planner decides whether the index is useful for this query and this data.",
+      "body": [
+        "Adding an index does not prove that a query is faster. EXPLAIN shows the access path the planner expects to use; EXPLAIN ANALYZE executes the statement and adds measured rows and timing. Estimated cost is a planner unit, not elapsed milliseconds.",
+        "Compare estimated and actual row counts before guessing at the next optimization. A large mismatch can make a poor plan look attractive. For a write query, remember that ANALYZE actually runs it: use a controlled environment and an appropriate transaction when examining effects."
+      ],
+      "related": "Connected to PostgreSQL access-pattern work at LBASE.",
+      "sources": [
+        {
+          "label": "PostgreSQL · using EXPLAIN",
+          "url": "https://www.postgresql.org/docs/current/using-explain.html"
+        }
+      ]
+    },
+    {
+      "id": "cache-aside",
+      "category": "Backend",
+      "title": "A cache has a freshness contract.",
+      "teaser": "A fast answer is useful only if the application knows how old it is allowed to be.",
+      "body": [
+        "In cache-aside, the application checks the cache first. On a miss, it reads the backing store, then caches the result. That simple read path adds a second copy of the data—and therefore a question about invalidation.",
+        "A TTL limits how long an entry remains cached, while invalidating after a successful write helps fresh data become visible sooner. The right choice depends on the cost of stale reads. Measure cache hits, misses, and backend load; a cache can hide an expensive access pattern without fixing it."
+      ],
+      "related": "Connected to Redis cache-aside and database optimization work.",
+      "sources": [
+        {
+          "label": "Redis · cache-aside pattern",
+          "url": "https://redis.io/docs/latest/develop/use-cases/cache-aside/"
+        }
+      ]
+    },
+    {
+      "id": "float-roundtrip",
+      "category": "Runtime",
+      "title": "The printed number is a representation.",
+      "teaser": "Numeric serialization should preserve the value the application needs, not just look plausible.",
+      "body": [
+        "A decimal string and its binary floating-point value are different representations. Many decimal fractions are approximations in binary, and a short display can hide the stored value. Serialization adds another boundary where a formatting choice can lose information.",
+        "For a round-trip contract, start with a value, serialize it, parse it, and compare according to the promised semantics. Include large integers, small fractions, and values near representation boundaries. The output looking reasonable is a weaker test than the value surviving."
+      ],
+      "related": "Connected to the merged pocketpy JSON numeric-serialization contribution.",
+      "sources": [
+        {
+          "label": "pocketpy · merged PR #519",
+          "url": "https://github.com/pocketpy/pocketpy/pull/519"
+        },
+        {
+          "label": "Python · floating-point limitations",
+          "url": "https://docs.python.org/3/tutorial/floatingpoint.html"
+        }
+      ]
+    },
+    {
+      "id": "generated-bindings",
+      "category": "Runtime",
+      "title": "Generated code has an upstream source.",
+      "teaser": "When a runtime embeds library code, changing only the generated artifact misses the maintenance path.",
+      "body": [
+        "Generated bindings are a build product. A durable contribution follows the path from the source definition, through the generator, to the emitted artifact. Otherwise, a future regeneration can erase a hand-edited fix.",
+        "The pocketpy standard-library contribution changed the Python library surface and regenerated its embedded C representation through prebuild.py. The interesting boundary is small but concrete: a Python helper must also reach the code that the runtime actually ships."
+      ],
+      "related": "Connected to operator.itemgetter and typing-placeholder additions in pocketpy.",
+      "sources": [
+        {
+          "label": "pocketpy · merged PR #487",
+          "url": "https://github.com/pocketpy/pocketpy/pull/487"
+        }
+      ]
+    },
+    {
+      "id": "compatibility-slices",
+      "category": "Runtime",
+      "title": "Compatibility can be a small, exact slice.",
+      "teaser": "Adding a familiar API name does not necessarily mean implementing every semantic feature behind it.",
+      "body": [
+        "A compatibility change needs a precise scope. An item lookup helper and a typing placeholder solve different problems: one adds runtime behavior; the other makes a name available to code that expects it.",
+        "The distinction matters when describing a contribution. The pocketpy change adds itemgetter and ReadOnly/Required placeholders. It should not be described as a complete runtime type-checking system. Small, accurately bounded changes are still useful—and easy for another engineer to inspect."
+      ],
+      "related": "Connected to the scope of pocketpy PR #487.",
+      "sources": [
+        {
+          "label": "pocketpy · accepted implementation",
+          "url": "https://github.com/pocketpy/pocketpy/pull/487"
+        }
+      ]
+    },
+    {
+      "id": "serialization-invariants",
+      "category": "Runtime",
+      "title": "A round trip is a test. Determinism is a property.",
+      "teaser": "One clean snapshot can miss representation, ordering, and restoration side effects.",
+      "body": [
+        "A serializer can pass an example round trip while still losing the information a simulation depends on. Computed values may not recover the original fields exactly, and changing iteration order can change the sequence of later calculations.",
+        "Separate the required properties: which values must be preserved, which identifiers must stay stable, which state is derived, and whether restoring data can trigger unrelated work. Then choose tests for each property. A single snapshot comparison cannot establish that two worlds will evolve identically over many frames."
+      ],
+      "related": "Connected to a world-state serialization review in the native physics project.",
+      "sources": [
+        {
+          "label": "sbx_extension · project context",
+          "url": "https://github.com/Steve5829/sbx_extension"
+        },
+        {
+          "label": "Python · floating-point behavior",
+          "url": "https://docs.python.org/3/tutorial/floatingpoint.html"
+        }
+      ]
+    },
+    {
+      "id": "plan-boundary",
+      "category": "AI tooling",
+      "title": "Let the model propose. Let the application decide.",
+      "teaser": "A structured plan makes the boundary between generation and execution explicit.",
+      "body": [
+        "An AI editor can ask a model for a plan expressed as data: named operations, required fields, and bounded arguments. Application code validates that shape before deciding what the request means. This is a more inspectable boundary than evaluating arbitrary generated code.",
+        "Schema validation is only the first check. An operation can be well formed and still inappropriate for a particular context. A separate policy layer can decide which paths, resources, or operations the application permits. TraceGate makes that policy decision visible without executing tools."
+      ],
+      "related": "Connected to Godot Vibe structured planning and the TraceGate policy lab.",
+      "sources": [
+        {
+          "label": "Godot Vibe · v2",
+          "url": "https://github.com/Steve5829/godot-vibe-plugin/tree/v2"
+        },
+        {
+          "label": "TraceGate · inspect a policy decision",
+          "url": "lab.html"
+        }
+      ]
+    },
+    {
+      "id": "provider-contracts",
+      "category": "AI tooling",
+      "title": "Share the contract, keep the differences.",
+      "teaser": "A provider abstraction should expose the behavior the product needs without pretending providers are identical.",
+      "body": [
+        "Image providers can differ in inputs, dimensions, supported editing modes, and error behavior. A common interface gives the application a stable place to request work, while adapters translate that request into each provider’s actual API.",
+        "A useful boundary normalizes successful results and makes unsupported capabilities explicit. It should not silently promise that two models will produce equivalent images. For developer tools, the goal is predictable workflow behavior even when the generation backend changes."
+      ],
+      "related": "Connected to the PixelLab/GPT Image provider pipeline in Godot Vibe.",
+      "sources": [
+        {
+          "label": "Godot Vibe · provider workflow",
+          "url": "https://github.com/Steve5829/godot-vibe-plugin/tree/v2"
+        }
+      ]
+    },
+    {
+      "id": "retrieval-and-tools",
+      "category": "AI tooling",
+      "title": "Retrieval informs. Tools change what is possible.",
+      "teaser": "Supplying context and invoking an API solve different parts of an agent workflow.",
+      "body": [
+        "A retrieval step finds material that can help answer a question. A tool call asks an application to perform a specific operation. Combining them is useful, but the retrieved text should remain evidence—not become permission to run arbitrary actions.",
+        "Keep the layers visible: which passages were retrieved, what operation was proposed, and what result the tool returned. That separation makes a mistaken answer easier to diagnose: irrelevant context, a bad plan, and an API failure call for different fixes."
+      ],
+      "related": "Connected to the Java support-agent project, which combines PgVector retrieval and MCP tools.",
+      "sources": [
+        {
+          "label": "AI Support Agent · project source",
+          "url": "https://github.com/Steve5829/emotion-ai-agent"
+        }
+      ]
+    },
+    {
+      "id": "fallbacks",
+      "category": "AI tooling",
+      "title": "A fallback is part of the product.",
+      "teaser": "When a model is unavailable, the application still needs a defined next step.",
+      "body": [
+        "A deterministic fallback can keep a narrow workflow usable when a model call fails or its result cannot be validated. The fallback should have its own clear contract: which inputs it supports, which operations it can propose, and when it must decline.",
+        "Keep the origin of the plan observable. A model-generated plan and a rule-generated plan may reach the same validation boundary, but debugging them starts in different places. Repeatable fallback behavior also makes it easier to test basic workflow behavior without relying on a live model."
+      ],
+      "related": "Connected to the rule-based planner fallback in Godot Vibe.",
+      "sources": [
+        {
+          "label": "Godot Vibe · structured planning",
+          "url": "https://github.com/Steve5829/godot-vibe-plugin/tree/v2"
+        }
+      ]
+    },
+    {
+      "id": "contact-lifecycle",
+      "category": "Game systems",
+      "title": "A flickering contact leaves a different trace.",
+      "teaser": "Choose an observation that separates competing explanations of the same visible bug.",
+      "body": [
+        "An object shaking near a wall can mean the contact itself appears and disappears, or that an active contact is resolved unstably. Those explanations can look similar on screen. Logging contact creation and removal separates them.",
+        "If the events alternate repeatedly, investigate detection thresholds, position correction, and the motion applied between frames. If the contact stays active, examine its normal and solver behavior. This is a general debugging move: find the cheapest observation that would make one hypothesis less likely."
+      ],
+      "related": "Connected to contact-jitter investigation in the native physics extension.",
+      "sources": [
+        {
+          "label": "sbx_extension · collision events and physics",
+          "url": "https://github.com/Steve5829/sbx_extension"
+        }
+      ]
+    },
+    {
+      "id": "geometry-instancing",
+      "category": "Game systems",
+      "title": "One draw call is not zero work.",
+      "teaser": "Instancing reduces submission overhead; it does not remove geometry, visibility, or update costs.",
+      "body": [
+        "Godot MultiMesh draws many instances of a shared mesh efficiently. That fits repeated geometry, such as the same tile shape at different transforms. It is a different problem from rebuilding a large collection of changing shapes.",
+        "Before choosing instancing, ask what is shared and what changes. The renderer still handles visible geometry, and MultiMesh visibility is managed as a group rather than independently per instance. Partitioning a world can therefore matter even after reducing draw-call count."
+      ],
+      "related": "Connected to rendering experiments for the Godot tile-world project.",
+      "sources": [
+        {
+          "label": "Godot · MultiMesh reference",
+          "url": "https://docs.godotengine.org/en/stable/classes/class_multimesh.html"
+        },
+        {
+          "label": "SpellTide · case study",
+          "url": "case-study.html?id=spelltide"
+        }
+      ]
+    },
+    {
+      "id": "torus-boundaries",
+      "category": "Game systems",
+      "title": "A wrapped coordinate changes the neighborhood.",
+      "teaser": "A query that crosses one edge of a torus world can reach objects on the opposite edge.",
+      "body": [
+        "In a wrap-around tile world, crossing a boundary changes how coordinates map into the world, not whether the query has meaning. Expanding a collision query near an edge can introduce candidates from the other side.",
+        "That makes boundary tests essential when adding margins or spatial caching. Test the middle of the map, each seam, and corner crossings separately. A local optimization can change the global set of candidates when the world’s topology is part of the query."
+      ],
+      "related": "Connected to torus tilemap and collision-query debugging.",
+      "sources": [
+        {
+          "label": "sbx_extension · torus tilemap architecture",
+          "url": "https://github.com/Steve5829/sbx_extension"
+        }
+      ]
+    },
+    {
+      "id": "broad-narrow-phase",
+      "category": "Game systems",
+      "title": "First find candidates. Then solve contacts.",
+      "teaser": "Broad phase and narrow phase spend different amounts of work to answer different questions.",
+      "body": [
+        "The broad phase cheaply identifies pairs that might interact. The narrow phase performs more detailed geometry checks and generates contact information. Keeping them separate avoids paying the expensive cost for every possible pair.",
+        "A broad-phase candidate is not yet a collision. That distinction is helpful in debugging: too many candidates points toward partitioning or query bounds; a bad contact normal points toward geometry or solving. Inspect the output at the boundary before changing both layers at once."
+      ],
+      "related": "Connected to chunked spatial queries and cube-body contacts in sbx_extension.",
+      "sources": [
+        {
+          "label": "Godot · physics pipeline",
+          "url": "https://godotengine.org/article/physics-progress-report-1/"
+        },
+        {
+          "label": "sbx_extension · source",
+          "url": "https://github.com/Steve5829/sbx_extension"
+        }
+      ]
+    }
+  ]
+}
